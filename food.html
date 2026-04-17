@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mom's Recipes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family:Arial , serif;
+}
+
+/* Header */
+.header {
+  background: red;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.header img {
+  height: 60px;
+}
+
+.title {
+  color: white;
+  font-size: 26px;
+  margin-left: 15px;
+}
+
+/* Hero Section */
+.introbg {
+  height: 35vh;
+weight:40vh;
+  background: url('food2.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay h2 {
+  color: white;
+  font-size: 28px;
+}
+
+/* Container */
+.container {
+  padding: 20px;
+}
+
+/* Categories */
+.category {
+  background: #f5f5f5;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.category:hover {
+  background: red;
+  color:white;
+}
+
+/* List */
+.list {
+  margin-left: 20px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .overlay h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .category {
+    font-size: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+
+  .overlay h2 {
+    font-size: 18px;
+  }
+
+  .category {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+</style>
+
+<script>
+function showMenu(id, items) {
+  let container = document.getElementById(id);
+
+  // Toggle (open/close)
+  if (container.innerHTML !== "") {
+    container.innerHTML = "";
+    return;
+  }
+
+  let html = '<ul style="list-style-type:square; font-weight:bold; color:yellow;">';
+  items.forEach(item => {
+    html += `<li style:"color:black"><a href="${item.link}" style="color:orange;">
+    ${item.name}</a></li>`;
+  });
+  html += '</ul>';
+
+  container.innerHTML = html;
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+  <img src="logo.png">
+  <div class="title"><a href="index.html" style="text-decoration:none; color:rgb(255,220,0);
+  font:italic bold 28px Brush Script MT;">MOM'S RECIPES</a></div>
+</div>
+
+<!-- Hero -->
+<div class="introbg">
+  <div class="overlay">
+    <h2 style="font-family:seriff; font-style:italic;" >Welcome to Food Recipe Section</h2>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="container">
+
+  <div class="category" onclick="showMenu('biryani', [
+    {name:'Hyderabadi Biryani', link:'hyderabadi.html'},
+    {name:'Lucknowi Biryani', link:'lucknowi.html'},
+    {name:'Kolkata Biryani', link:'kolkata.html'},
+    {name:'Malabar Biryani', link:'malabar.html'},
+    {name:'Veg Biryani', link:'veg.html'}
+  ])">🍛 Biryani</div>
+ <div class="list" id="biryani"></div>
+
+  <div class="category"  onclick="showMenu('dosa', [
+    {name:'Plain Dosa', link:'plain.html'},
+    {name:'Masala Dosa', link:'masala.html'},
+    {name:'Rava Dosa', link:'rava.html'},
+    {name:'Set Dosa', link:'set.html'},
+    {name:'Paper Dosa', link:'paper.html'}
+  ])">🥞 Dosa</div> 
+ <div class="list" id="dosa"></div>
+
+  <div class="category"  onclick="showMenu('curry', [
+    {name:'Butter Chicken', link:'butter.html'},
+    {name:'Paneer Butter Masala', link:'paneerbutter.html'},
+    {name:'Chicken Curry', link:'chicken.html'},
+    {name:'Dal Makhani', link:'dalmakani.html'},
+    {name:'Chana Masala', link:'chana.html'}
+  ])">🍲 Curry</div>
+  <div class="list" id="curry"></div>
+
+  <div class="category"   onclick="showMenu('bread', [
+    {name:'Naan', link:'naan.html'},
+    {name:'Roti', link:'roti.html'},
+    {name:'Kulcha', link:'kulcha.html'},
+    {name:'Bhatura', link:'bhatura.html'}
+  ])">🥖 Indian Breads</div>
+  <div class="list" id="bread"></div>
+
+  <div class="category" onclick="showMenu('chaat', [
+    {name:'Pani Puri', link:'panipuri.html'},
+    {name:'Bhel Puri', link:'bhel.html'}
+  ])">🌮 Chaat</div>
+  <div class="list" id="chaat"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mom's Recipes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family:Arial , serif;
+}
+
+/* Header */
+.header {
+  background: #57B9FF;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.header img {
+  height: 60px;
+}
+
+.title {
+  color: white;
+  font-size: 26px;
+  margin-left: 15px;
+}
+
+/* Hero Section */
+.introbg {
+  height: 300px;
+  background: url('drinks.png') center/cover;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay h2 {
+  color: white;
+  font-size: 28px;
+}
+
+/* Container */
+.container {
+  padding: 20px;
+}
+
+/* Categories */
+.category {
+  background: #f5f5f5;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.category:hover {
+  background: #57B9FF;
+  color:white;
+}
+
+/* List */
+.list {
+  margin-left: 20px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .overlay h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .category {
+    font-size: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+
+  .overlay h2 {
+    font-size: 18px;
+  }
+
+  .category {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+</style>
+
+<script>
+function showMenu(id, items) {
+  let container = document.getElementById(id);
+
+  // Toggle (open/close)
+  if (container.innerHTML !== "") {
+    container.innerHTML = "";
+    return;
+  }
+
+  let html = '<ul style="list-style-type:square; font-weight:bold; color:blue;">';
+  items.forEach(item => {
+    html += `<li style="color:blue"><a href="${item.link}" style="color:blue;">
+    ${item.name}</a></li>`;
+  });
+  html += '</ul>';
+
+  container.innerHTML = html;
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+  <img src="logo.png">
+  <div class="title"><a href="index.html" style="text-decoration:none; color:rgb(255,255,255);
+  font:italic bold 28px Brush Script MT;">MOM'S RECIPES</a></div>
+</div>
+
+<!-- Hero -->
+<div class="introbg">
+  <div class="overlay">
+    <h2 style="font-family:seriff; font-style:italic">Welcome to Drinks Recipe Section</h2>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="container">
+
+  <div class="category" onclick="showMenu('Beverages', [
+    {name:'Masala Chai', link:'masalachai.html'},
+    {name:'Coffee', link:'coffee.html'},
+    {name:'Buttermilk(Chaas)', link:'buttermilk.html'},
+    {name:'Black Tea', link:'blacktea.html'},
+  ])">☕ Beverages </div>
+ <div class="list" id="Beverages"></div>
+
+  <div class="category"  onclick="showMenu('Juices', [
+    {name:'Orange Juice', link:'orange.html'},
+    {name:'Mosambi Juice', link:'mosambi.html'},
+    {name:'Pineapple Juice', link:'pineapple.html'},
+    {name:'Watermelon Juice ', link:'watermelon.html'},
+  ])">🍹 Juices</div> 
+ <div class="list" id="Juices"></div>
+
+  <div class="category"  onclick="showMenu('Cooling', [
+    {name:'Jaljeera', link:'jaljeera.html'},
+    {name:'Aam Panna', link:'aampanna.html'},
+    {name:'Pudina Sharbat', link:'pudinasharbat.html'},
+    {name:'Nimbu Paani', link:'nimbupaani.html'},
+  ])">🧊 Cooling Drinks</div>
+  <div class="list" id="Cooling"></div>
+
+  <div class="category"   onclick="showMenu('Lassi', [
+    {name:'Sweet Lassi', link:'sweetlassi.html'},
+    {name:'Salted Lassi', link:'saltlassi.html'},
+    {name:'Mango Lassi', link:'mangolassi.html'},
+  ])">🥛 Lassi</div>
+  <div class="list" id="Lassi"></div>
+
+</div>
+</body>
+</html>
